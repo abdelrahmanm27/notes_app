@@ -1,8 +1,10 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, must_be_immutable
 
 import 'package:flutter/material.dart';
 
 class CustomSearchIcon extends StatelessWidget {
+  CustomSearchIcon({required this.icon});
+  IconData icon;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,7 +15,7 @@ class CustomSearchIcon extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
       ),
       child: Icon(
-        Icons.search,
+        icon,
         size: 20,
       ),
     );
