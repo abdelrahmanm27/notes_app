@@ -1,8 +1,8 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:notes_app/widgets/custom_app_bar.dart';
-import 'package:notes_app/widgets/custom_text_field.dart';
+import 'package:notes_app/views/widgets/custom_app_bar.dart';
+import 'package:notes_app/views/widgets/custom_text_field.dart';
 
 class EditNoteViewBody extends StatelessWidget {
   @override

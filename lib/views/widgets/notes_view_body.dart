@@ -1,8 +1,8 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:notes_app/widgets/custom_app_bar.dart';
-import 'package:notes_app/widgets/notes_list_view.dart';
+import 'package:notes_app/views/widgets/custom_app_bar.dart';
+import 'package:notes_app/views/widgets/notes_list_view.dart';
 
 class NotesViewBody extends StatelessWidget {
   @override

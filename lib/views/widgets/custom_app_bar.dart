@@ -1,7 +1,7 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:notes_app/widgets/custom_search_icon.dart';
+import 'package:notes_app/views/widgets/custom_search_icon.dart';
 
 class CustomAppBar extends StatelessWidget {
   CustomAppBar({required this.title, required this.icon});
