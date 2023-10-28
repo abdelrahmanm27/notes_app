@@ -9,13 +9,14 @@ import 'package:notes_app/views/widgets/add_note_form.dart';
 class AddNoteBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: SingleChildScrollView(
+    return BlocProvider(
+      create: (context) => AddNoteCubit(),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: BlocConsumer<AddNoteCubit, AddNoteStates>(
           listener: (context, state) {
             if (state is AddNotesFailure) {
-              print('Failed ${state.errMessage}');
+              debugPrint('Failed ${state.errMessage}');
             }
             if (state is AddNotesSuccess) {
               Navigator.pop(context);
@@ -26,8 +27,11 @@ class AddNoteBottomSheet extends StatelessWidget {
               return Center(
                 child: CircularProgressIndicator(),
               );
+            } else {
+              return SingleChildScrollView(
+                child: AddNoteForm(),
+              );
             }
-            return AddNoteForm();
           },
         ),
       ),
