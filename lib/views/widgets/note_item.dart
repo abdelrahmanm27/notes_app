@@ -1,8 +1,12 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors, avoid_print, must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/edit_note_view.dart';
+import 'package:notes_app/views/widgets/custom_snackbar.dart';
+
+import '../../cubits/notes_cubit/notes_cubit.dart';
 
 class NoteItem extends StatelessWidget {
   NoteItem({required this.note});
@@ -65,7 +69,7 @@ class NoteItem extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  note.delete();
+                  deleteSnackBar(context, 'Delete this note ?', note);
                 },
               ),
             ),
