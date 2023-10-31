@@ -1,12 +1,13 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable
-
 import 'package:flutter/material.dart';
-import 'package:notes_app/views/widgets/custom_search_icon.dart';
+import 'package:notes_app/views/widgets/custom_icon_button.dart';
 
+// ignore: must_be_immutable
 class CustomAppBar extends StatelessWidget {
-  CustomAppBar({required this.title, required this.icon});
+  CustomAppBar(
+      {super.key, required this.title, required this.icon, this.onPressed});
   String title;
   IconData icon;
+  void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -15,11 +16,12 @@ class CustomAppBar extends StatelessWidget {
       children: [
         Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 24,
           ),
         ),
-        CustomSearchIcon(
+        CustomIconButton(
+          onPressed: onPressed,
           icon: icon,
         ),
       ],

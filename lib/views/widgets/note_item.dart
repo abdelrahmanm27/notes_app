@@ -1,15 +1,11 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors, avoid_print, must_be_immutable
-
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/edit_note_view.dart';
 import 'package:notes_app/views/widgets/custom_snackbar.dart';
 
-import '../../cubits/notes_cubit/notes_cubit.dart';
-
+// ignore: must_be_immutable
 class NoteItem extends StatelessWidget {
-  NoteItem({required this.note});
+  NoteItem({super.key, required this.note});
   NoteModel note;
 
   @override
@@ -19,12 +15,12 @@ class NoteItem extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => EditNoteView(),
+            builder: (context) => EditNoteView(note: note),
           ),
         );
       },
       child: Container(
-        padding: EdgeInsets.only(
+        padding: const EdgeInsets.only(
           top: 20,
           bottom: 20,
           left: 12,
@@ -39,13 +35,13 @@ class NoteItem extends StatelessWidget {
             ListTile(
               title: Text(
                 note.title,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.black,
                   fontSize: 20,
                 ),
               ),
-              subtitle: Padding(
-                padding: EdgeInsets.only(
+              subtitle:  Padding(
+                padding: const EdgeInsets.only(
                   top: 14,
                   bottom: 14,
                 ),
@@ -57,9 +53,9 @@ class NoteItem extends StatelessWidget {
                   ),
                 ),
               ),
-              trailing: IconButton(
-                icon: Padding(
-                  padding: const EdgeInsets.only(
+              trailing:  IconButton(
+                icon: const Padding(
+                  padding: EdgeInsets.only(
                     left: 12,
                   ),
                   child: Icon(
@@ -69,12 +65,18 @@ class NoteItem extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  deleteSnackBar(context, 'Delete this note ?', note);
+                  customSnackBar(
+                    context: context,
+                    msg: 'Delete this note ?',
+                    confirmLabel: 'Yes',
+                    note: note,
+                    deleteNote: true,
+                  );
                 },
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(
+              padding: const EdgeInsets.only(
                 right: 20,
               ),
               child: Text(

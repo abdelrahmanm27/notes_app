@@ -1,10 +1,9 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, must_be_immutable
-
 import 'package:flutter/material.dart';
 import 'package:notes_app/constants.dart';
 
+// ignore: must_be_immutable
 class CustomButton extends StatelessWidget {
-  CustomButton({this.onTap});
+  CustomButton({super.key, this.onTap});
   void Function()? onTap;
 
   @override
@@ -18,8 +17,8 @@ class CustomButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
           color: kPrimaryColor,
         ),
-        child: Center(
-          child: Text(
+        child: const Center(
+          child:  Text(
             'Add',
             style: TextStyle(
               fontSize: 20,

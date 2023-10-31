@@ -1,25 +1,31 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 
-void deleteSnackBar(BuildContext context, String msg, NoteModel note) {
+void customSnackBar({
+  required BuildContext context,
+  required String msg,
+  NoteModel? note,
+  bool deleteNote = false,
+  String confirmLabel = '',
+}) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       backgroundColor: Colors.black.withOpacity(0.1),
       content: Text(
         msg,
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.white,
         ),
       ),
       action: SnackBarAction(
-        label: 'Yes',
+        label: confirmLabel,
         onPressed: () {
-          note.delete();
-          BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+          if (deleteNote == true && note != null) {
+            note.delete();
+            BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+          }
         },
       ),
     ),

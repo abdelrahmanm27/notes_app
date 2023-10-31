@@ -1,14 +1,21 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, must_be_immutable
-
 import 'package:flutter/material.dart';
 import 'package:notes_app/constants.dart';
 
+// ignore: must_be_immutable
 class CustomTextFormField extends StatelessWidget {
-  CustomTextFormField({required this.hintText, this.maxLines = 1, this.onSaved});
-  String hintText;
+  CustomTextFormField({super.key, 
+    this.hintText,
+    this.maxLines = 1,
+    this.onSaved,
+    this.onChanged,
+    this.initialText,
+  });
+  String? hintText;
   int maxLines;
+  String? initialText;
 
   void Function(String?)? onSaved;
+  void Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +28,10 @@ class CustomTextFormField extends StatelessWidget {
           return null;
         }
       },
+      onChanged: onChanged,
       maxLines: maxLines,
       cursorColor: kPrimaryColor,
+      initialValue: initialText,
       decoration: InputDecoration(
         hintText: hintText,
         border: buildBorder(),
