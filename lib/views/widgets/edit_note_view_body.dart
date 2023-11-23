@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/widgets/custom_app_bar.dart';
+import 'package:notes_app/views/widgets/custom_snackbar.dart';
 import 'package:notes_app/views/widgets/custom_text_field.dart';
+import 'package:notes_app/views/widgets/edit_colors_list_view.dart';
 
 // ignore: must_be_immutable
 class EditNoteViewBody extends StatelessWidget {
@@ -28,6 +30,7 @@ class EditNoteViewBody extends StatelessWidget {
               note.save();
               BlocProvider.of<NotesCubit>(context).fetchAllNotes();
               Navigator.pop(context);
+              customSnackBar(context: context, msg: 'Note edited successfully!',);
             },
             title: 'Edit Note',
             icon: Icons.check,
@@ -50,6 +53,12 @@ class EditNoteViewBody extends StatelessWidget {
             onChanged: (value) {
               content = value;
             },
+          ),
+          const SizedBox(
+            height: 16,
+          ),
+          EditColorsListView(
+            note: note,
           ),
         ],
       ),
